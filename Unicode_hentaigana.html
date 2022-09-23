@@ -22,14 +22,15 @@
 ＃HTML作成
 「<input id="NINJAL" type="radio" name="font" checked="checked">NINJAL
 <input id="花園" type="radio" name="font" >花園
-<style id="フォント変更"></style><div id="コード表">」をDOM親要素へHTML設定。
+<div id="コード表">」をDOM親要素へHTML設定。
+「#コード表」の「className」に「NINJAL」をDOM属性設定。
 
 ＃イベント
 「#NINJAL」の「change」がDOMイベント発火した時には、
-    「#フォント変更」に『table {font-family: NINLAL変体仮名,変体仮名1B000;}』をHTML設定。
+    「#コード表」の「className」に「NINJAL」をDOM属性設定。
 ここまで。
 「#花園」の「change」がDOMイベント発火した時には、
-    「#フォント変更」に『table {font-family: 花園明朝変体仮名;}』をHTML設定。
+    「#コード表」の「className」に「hanazono」をDOM属性設定。
 ここまで。
 
 ＃コード表作成
