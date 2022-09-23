@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="author" content="雪乃☆雫">
+    <meta name="keywords" content="なでしこ,なでしこv3,日本語プログラミング言語,なでしこさん,変体仮名,古文">
+    <meta name="description" content="Unicodeに登録されている、変体仮名のコード表"> 
+    <link rel="stylesheet" href="Unicode_hentaigana.css">
+    <title>変体仮名　文字コード表</title>
+</head>
+
+<body>
+<!-- なでしこの実行エンジン -->
+<script defer type="text/javascript" src="https://nadesi.com/v3/cdn.php?v=3.3.74&f=release/wnako3.js&run"></script>
+<!-- type="なでしこ" のスクリプトが実行される -->
+<script type="なでしこ">
+#-----------------------------------------------------------------------
+「#nako3_div」へDOM親要素設定。
+#-----------------------------------------------------------------------
+
+＃HTML作成
+「<input id="NINJAL" type="radio" name="font" checked="checked">NINJAL
+<input id="花園" type="radio" name="font" >花園
+<style id="フォント変更"></style><div id="コード表">」をDOM親要素へHTML設定。
+
+＃イベント
+「#NINJAL」の「change」がDOMイベント発火した時には、
+    「#フォント変更」に『table {font-family: NINLAL変体仮名,変体仮名1B000;}』をHTML設定。
+ここまで。
+「#花園」の「change」がDOMイベント発火した時には、
+    「#フォント変更」に『table {font-family: 花園明朝変体仮名;}』をHTML設定。
+ここまで。
+
+＃コード表作成
+URL＝「Unicode_hentaigana.csv」
+URLからAJAXテキスト取得。
+対応表＝それをCSV取得。
+0x1B000から0x1B11Eまでコード表生成してSに代入。
+Sを「#コード表」へHTML設定。
+
+●(NからMまで)コード表生成
+　S=「<table><tr><th>*</th>」
+　Iを0から15まで繰り返す　　　　　　#ヘッダ出力
+　　　H=HEX(I)を大文字変換。
+　　　S=S&「<th>{H}</th>」
+　ここまで
+　S=S&「</tr>」
+　No=1
+　CをNからMまで繰り返す　　　　　　#文字を出力
+　　　ヨミ＝「読み：」&対応表[No][0]
+　　　字母＝「字母：」&対応表[No][1]
+　　　もし、対応表[No][3]＝空でなければ、
+　　　　　備考＝対応表[No][3]の「。」を「<BR>」に置換。
+　　　　　備考＝「<BR>備考：」&備考。
+　　　違えば、
+　　　　　備考＝空。
+　　　ここまで。
+　　　もし、(C%16)=0ならば
+　　　　　H=HEX(C)を大文字変換。
+　　　　　S=S&「<tr><tr><th>{H}</th>」
+　　　ここまで
+　　　S=S&「<td><A href="#">」& HTML変換(CHR(C)) &「<span class="remark">{ヨミ}　{字母}{備考}</span></A></td>」
+　　　もし、(C%16)=15ならば、S=S&「</tr>」
+　　　No=No+1。
+　ここまで
+　S=S&「<td>・</td></tr></table>」
+　Sをトリム
+ここまで。
+
+●CSV取得(Sを|Sの|Sで)
+　　仮表＝空配列。
+　　S=Sを改行で区切る。
+　　Sを反復
+　　　　それを「,」で区切る。
+　　　　仮表にそれを配列追加。
+　　ここまで。
+　　仮表で戻る。
+ここまで。
+#-----------------------------------------------------------------------
+</script>
+
+<div id='nako3_div' class='nako3_div'></div>
+
+</body>
+</html>

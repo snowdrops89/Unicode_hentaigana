@@ -1,0 +1,62 @@
+/* フォント */
+@font-face {
+    font-family:NINLAL変体仮名;
+    src: url('../font/hentaigana/ninjal_hentaigana.woff') format('woff');
+}
+@font-face {
+    font-family:変体仮名1B000;
+    src: url('../font/hentaigana/1B000.woff') format('woff') ;
+}
+@font-face {
+    font-family:花園明朝変体仮名;
+    src: url('../font/hentaigana/HanaMin_hentaigana.woff') format('woff');
+}
+#about {
+    font-family: 変体仮名1B000;
+}
+
+/* テーブル */
+table {
+    font-family: 花園明朝変体仮名;
+    border:solid 2px #999999;
+    border-collapse: collapse;
+    margin: 4px 0;
+}
+th {
+    background-color: #EEEEFF;
+    padding: 4px 8px;
+    border:solid 1px #999999;
+    border-collapse:collapse;
+    color: #000033;
+    font-weight: bold;
+    font-size:24px;
+}
+td {
+    background-color: #FCFCFF;
+    padding: 4px 8px;
+    border:solid 1px #999999;
+    border-collapse:collapse;
+    color: #333333;
+    font-size:32px;
+}
+td a {
+    color:#333333;
+    text-decoration: none;
+}
+
+/* ポップアップ */
+span.remark {
+    display: none;
+    font-size:24px;
+}
+a:hover span.remark {
+    background: none repeat scroll 0 0 #EEFFEE;
+    border: 1px solid #999999;
+    color: #333333;
+    display: block;
+    line-height: 1.2em;
+    margin:0px;
+    padding: 8px 20px;
+    position: absolute;
+    width: 300px;
+}
